@@ -52,6 +52,15 @@ Blazor uses a concept called the **RenderTree**, which is a DOM abstraction simi
 - Before the component re-renders, the current state is compared with the new state, and a diff is produced.
 - Only the differences are applied to the DOM during the update, optimizing performance.
 
+## Lifecycle 
+- public override async Task SetParametersAsync(ParameterView parameters)
+- protected override void OnInitialized()
+- protected override async Task OnInitializedAsync()
+- protected override void OnParametersSetAsync()
+- protected override async Task OnParametesSetAsync()
+- protected override bool ShouldRender()
+- protected override void OnAfterRender(bool firstRender)
+- protected override async Task OnAfterRenderAsync(bool firstRender)
 ---
 
 
