@@ -1,102 +1,57 @@
-# Learning Blazor
+# Introduction to Blazor
 
-## Introduction
+## Overview
+Blazor is a framework for building interactive client-side web UIs with .NET. Developed and supported by Microsoft as part of the .NET ecosystem, Blazor was first released in 2018 with .NET 3.0. The framework enables developers to:
+- Create rich interactive UIs using C# instead of JavaScript.
+- Share server-side and client-side application logic written in .NET.
+- Render the UI as HTML and CSS, ensuring wide browser support, including mobile browsers.
 
-Welcome to the Learning Blazor project! This is a learning project for those who want to explore and get acquainted with Blazor, a Microsoft framework for building interactive web applications using .NET and C#.
+### Blazor Server
+- **Thin client**: Minimal client-side logic, reducing the client-side footprint.
+- **Full runtime**: Provides a full .NET runtime on the server.
+- **More secure**: Server-side logic is more secure as it is not exposed to the client.
+- **UI latency on bad network**: Higher latency can occur if the network is slow or unstable.
+- **Harder to scale**: Uses SignalR, which can make it harder to scale under heavy load.
 
-## Objectives
+### Blazor WebAssembly
+- **Static file hosting**: Blazor WebAssembly apps can be hosted on any web server.
+- **Offline support/PWA**: Supports Progressive Web Apps (PWA) and can work offline.
+- **Zero latency UI**: UI updates are immediate, as all logic runs on the client.
+- **Big download size**: Initial download size can be large, impacting load times.
 
-- Understand the basics of Blazor and how it works.
-- Build and deploy a Blazor application.
-- Master key components of Blazor, including Blazor Server and Blazor WebAssembly.
+## Why Blazor?
+- **Based on .NET and C#**: .NET developers do not need to learn new frameworks like Vue, Angular, or React.
+- **Leverages the .NET ecosystem**: Utilizes existing .NET libraries and tools.
+- **Enables code sharing**: Allows sharing code between the frontend and backend.
+- **Mature and supported by Microsoft**: Backed by Microsoft with continuous improvements and support.
+- **Benefits from .NET performance, reliability, and security**.
+- **Rich ecosystem of components**:
+  - Paid components: Syncfusion, Infragistics, Progress Telerik, DevExpress, etc.
+  - Free components: Radzen, MudBlazor, Blazorstrap, Ant Design Blazor, etc.
+- Suitable for applications where user base is not massive, or initial load time is not critical.
 
-## Project Contents
+## Blazor Components
+Blazor applications are based on components, which are the building blocks of the UI. A component in Blazor represents a part of the UI, such as a page, dialog, or data entry form.
 
-This project includes the following sections:
+- **Components**: .NET C# classes built into .NET assemblies that:
+  - Define flexible UI rendering logic.
+  - Handle user events.
+  - Can be nested and reused.
+  - Can be shared and distributed as Razor class libraries or NuGet packages.
+- **Razor components**: Inherit from the `ComponentBase` base class.
+- **Partial class support**:
+  - A single file can contain C# code defined in one or more `@code` blocks, HTML markup, and Razor markup.
+  - HTML and Razor markup are placed in a `.razor` file, while C# code is placed in a code-behind file defined as a partial class (`.cs`).
+- **Required parameters**: Parameters can be passed to components to manage data and state.
 
-1. **Introduction to Blazor**
-   - Basic concepts of Blazor
-   - Comparison between Blazor Server and Blazor WebAssembly
+## Rendering in Blazor
+Blazor uses a concept called the **RenderTree**, which is a DOM abstraction similar to the Virtual DOM. 
 
-2. **Setting Up the Development Environment**
-   - Installing Visual Studio or VS Code
-   - Installing the .NET SDK
-   - Creating a new Blazor project
-
-3. **Building a Blazor Application**
-   - Creating user interfaces with Razor Components
-   - Using services and dependency injection
-   - Connecting to a database
-
-4. **Deploying the Application**
-   - Deploying Blazor Server to IIS or Azure
-   - Deploying Blazor WebAssembly to GitHub Pages or Netlify
-
-5. **Documentation and Learning Resources**
-   - Official Microsoft documentation
-   - Community tutorials and guides
-
-## Installation
-
-### Requirements
-
-- [.NET SDK](https://dotnet.microsoft.com/download) (latest version)
-- [Visual Studio](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
-
-### Installing the Project
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/yourusername/learning-blazor.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd learning-blazor
-    ```
-
-3. Install the required packages:
-
-    ```bash
-    dotnet restore
-    ```
-
-4. Run the application:
-
-    ```bash
-    dotnet run
-    ```
-
-5. Open a browser and visit:
-
-    ```
-    http://localhost:5000
-    ```
-
-## Project Structure
-
-- `Client/` - Blazor WebAssembly project
-- `Server/` - Blazor Server project
-- `Shared/` - Components shared between Client and Server
-- `Docs/` - Documentation and guides
-
-## References
-
-- [Blazor Documentation](https://docs.microsoft.com/en-us/aspnet/core/blazor/)
-- [Microsoft Learn Blazor Tutorial](https://learn.microsoft.com/en-us/learn/modules/build-web-apps-with-blazor/)
-- [Blazor GitHub Repository](https://github.com/dotnet/aspnetcore/tree/main/src/Components)
-
-## Contributing
-
-We welcome contributions from the community! If you have any improvements or find issues, please open a pull request or report an issue on GitHub.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- The RenderTree can be updated more efficiently than the traditional DOM, as it reconciles multiple changes into a single update.
+- When a component's state changes, a new copy of the RenderTree is created from the changes, either through code or data binding.
+- Before the component re-renders, the current state is compared with the new state, and a diff is produced.
+- Only the differences are applied to the DOM during the update, optimizing performance.
 
 ---
-
 
 
